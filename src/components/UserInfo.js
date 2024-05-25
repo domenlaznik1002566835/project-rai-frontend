@@ -10,7 +10,7 @@ const UserInfo = () => {
 
     return (
         <div>
-            <p>Logged in as: {user.username}</p>
+            <p>Logged in as: {user.email}</p>
         </div>
     );
 };

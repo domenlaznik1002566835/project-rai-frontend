@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
+import axios from 'axios';
 
 const Login = () => {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { login } = useUser();
+    const { setUserContext } = useUser();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Login form submitted'); // Debugging log
+
         try {
-            await login(username, password);
+            const response = await axios.post('http://localhost:3001/clients/login', { email, password });
+            const userInfo = response.data;
+            setUserContext(userInfo);
+            console.log('User context set:', userInfo); // Debugging log
         } catch (error) {
             console.error('Login failed:', error);
         }
@@ -18,11 +24,11 @@ const Login = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input
-                type="text"
-                name="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email"
             />
             <input
                 type="password"
