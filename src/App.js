@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Register from './components/Register';
 import UserInfo from './components/UserInfo';
+import DatabaseManipulation from "./components/DatabaseManipulation";
 
 function App() {
     const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
@@ -28,6 +29,7 @@ function App() {
                         <Route path="/logout" element={<Logout />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/userinfo" element={<UserInfo />} />
+                        <Route path="/dbm" element={<DatabaseManipulation />} />
                     </Routes>
                 </div>
             </UserProvider>

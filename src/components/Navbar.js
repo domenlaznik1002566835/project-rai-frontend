@@ -16,6 +16,9 @@ const Navbar = () => {
                     <li className="navbar-item">
                         <Link to="/" className="navbar-link">Home</Link>
                     </li>
+                    <li lassName="navbar-item">
+                        <Link to="/dbm" className="navbar-link">Database</Link>
+                    </li>
                     {user ? (
                         <>
                             <li className="navbar-item">
