@@ -16,6 +16,12 @@ const Navbar = () => {
                     <li className="navbar-item">
                         <Link to="/" className="navbar-link">Home</Link>
                     </li>
+                    <li className="navbar-item">
+                        <Link to="/dbm" className="navbar-link">Database</Link>
+                    </li>
+                    <li className="navbar-item">
+                        <Link to="/dbi" className="navbar-link">Insert</Link>
+                    </li>
                     {user ? (
                         <>
                             <li className="navbar-item">
