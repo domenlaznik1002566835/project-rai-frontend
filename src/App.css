@@ -122,3 +122,7 @@
   max-width: 100%;
   max-height: 100%;
 }
+
+.new-article-golden-shadow {
+  box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.3);
+}
