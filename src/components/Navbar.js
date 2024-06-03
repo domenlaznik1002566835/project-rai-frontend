@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { FaJediOrder, FaComments, FaTimes } from 'react-icons/fa';
+import { FaJediOrder, FaComments, FaTimes, FaUserCircle } from 'react-icons/fa';
 import { IoFastFood } from "react-icons/io5";
 
 const NavigationBar = () => {
     const { user } = useUser();
+    const { level } = useUser();
     const [isChatExpanded, setChatExpanded] = useState(false);
     const [chatAreaWidth, setChatAreaWidth] = useState(window.innerWidth / 5);
     const [chatAreaHeight, setChatAreaHeight] = useState(window.innerHeight / 2);
@@ -34,18 +35,23 @@ const NavigationBar = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Button as={Link} to="/dbm" variant="outline-danger" className="mx-1">Database</Button>
-                            <Button as={Link} to="/dbi" variant="outline-danger" className="mx-1">Insert</Button>
+                            {level === 3 ? (
+                                <Button as={Link} to="/dbm" variant="outline-danger" className="mx-1">Database</Button>
+                            ) : null}
+                            {level > 0 ? (
+                                <Button as={Link} to="/dbi" variant="outline-danger" className="mx-1">Insert</Button>
+                            ) : null}
                             <Button as={Link} to="/order" variant="outline-primary" className="mx-1"><IoFastFood /></Button>
                             {user ? (
                                 <>
-                                    <Button as={Link} to="/userInfo" variant="outline-primary" className="mx-1">User Info</Button>
+                                    <Button as={Link} to="/userInfo" variant="outline-primary" className="mx-1">
+                                        <FaUserCircle />
+                                    </Button>
                                     <Button as={Link} to="/logout" variant="outline-danger" className="mx-1">Logout</Button>
                                 </>
                             ) : (
                                 <>
                                     <Button as={Link} to="/login" variant="outline-primary" className="mx-1">Login</Button>
-                                    <Button as={Link} to="/register" variant="outline-primary" className="mx-1">Register</Button>
                                 </>
                             )}
                         </Nav>
