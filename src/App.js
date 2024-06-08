@@ -11,6 +11,7 @@ import UserInfo from './components/UserInfo';
 import DatabaseManipulation from "./components/DatabaseManipulation";
 import DatabaseInserts from "./components/DatabaseInserts";
 import ArticleDetail from "./components/ArticleDetail";
+import Contracts from "./components/Contracts";
 
 function App() {
     const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
@@ -34,6 +35,7 @@ function App() {
                         <Route path="/dbm" element={<DatabaseManipulation />} />
                         <Route path="/dbi" element={<DatabaseInserts />} />
                         <Route path="/article/:id" element={<ArticleDetail />} />
+                        <Route path="/contracts" element={<Contracts />} />
                     </Routes>
                 </div>
             </UserProvider>
