@@ -31,48 +31,35 @@ const UserInfo = () => {
                 </Col>
             </Row>
             {level === -1 && (
-                <>
-                    <Row>
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Package</Card.Title>
-                                    <Card.Text>Random text for package</Card.Text>
-                                    <Button variant="primary" onClick={() => handleSeeMore('/package')}>See More</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Room</Card.Title>
-                                    <Card.Text>Random text for room</Card.Text>
-                                    <Button variant="primary" onClick={() => handleSeeMore('/room')}>See More</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                    <Row className="mt-4">
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Contract</Card.Title>
-                                    <Card.Text>Random text for contract</Card.Text>
-                                    <Button variant="primary" onClick={() => handleSeeMore('/contract')}>See More</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                        <Col>
-                            <Card>
-                                <Card.Body>
-                                    <Card.Title>Recent Orders</Card.Title>
-                                    <Card.Text>Random text for recent orders</Card.Text>
-                                    <Button variant="primary" onClick={() => handleSeeMore('/orders')}>See More</Button>
-                                </Card.Body>
-                            </Card>
-                        </Col>
-                    </Row>
-                </>
+                <Row className="justify-content-md-center">
+                    <Col md={4} className="mb-4">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Package</Card.Title>
+                                <Card.Text>See logs for you package here</Card.Text>
+                                <Button variant="primary" onClick={() => handleSeeMore('/package')}>See More</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={4} className="mb-4">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Room</Card.Title>
+                                <Card.Text>See your room information here</Card.Text>
+                                <Button variant="primary" onClick={() => handleSeeMore('/room')}>See More</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col md={4} className="mb-4">
+                        <Card>
+                            <Card.Body>
+                                <Card.Title>Contract</Card.Title>
+                                <Card.Text>See your contracts here</Card.Text>
+                                <Button variant="primary" onClick={() => handleSeeMore('/contract')}>See More</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
             )}
         </Container>
     );

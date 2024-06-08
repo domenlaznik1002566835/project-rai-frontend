@@ -16,7 +16,7 @@ const Login = () => {
         console.log('Login form submitted');
 
         try {
-            const response = await axios.post(`${ip}/clients/login`, { email, password });
+            const response = await axios.post(`${ip}/clients/login-web`, { email, password });
             const userInfo = response.data;
             setUserContext(userInfo);
             console.log('User context set:', userInfo);

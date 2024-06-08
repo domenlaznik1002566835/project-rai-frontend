@@ -49,7 +49,6 @@ const NavigationBar = () => {
                             {level > -1 ? (
                                 <Button as={Link} to="/contracts" variant="outline-danger" className="mx-1">Contracts</Button>
                             ) : null}
-                            <Button as={Link} to="/order" variant="outline-primary" className="mx-1"><IoFastFood /></Button>
                             {user ? (
                                 <>
                                     <Button as={Link} to="/userInfo" variant="outline-primary" className="mx-1">
@@ -67,13 +66,6 @@ const NavigationBar = () => {
                 </Container>
             </Navbar>
             <div style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
-                <FaComments size="2em" color="blue" style={{ cursor: 'pointer' }} onClick={() => setChatExpanded(!isChatExpanded)} />
-                {isChatExpanded && (
-                    <div className="chat-area" style={{ position: 'fixed', bottom: '20px', right: '20px', width: `${chatAreaWidth}px`, height: `${chatAreaHeight}px`, backgroundColor: 'white', border: '1px solid black', borderRadius: '10px', padding: '10px', overflow: 'auto' }}>
-                        <FaTimes style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }} onClick={() => setChatExpanded(false)} />
-                        <div>Experiencing issues? Let us know.</div>
-                    </div>
-                )}
                 {level > -1 && (
                     <div style={{ position: 'fixed', bottom: '20px', left: '20px' }}>
                         <FaPencilAlt size="2em" color="blue" style={{ cursor: 'pointer' }} onClick={() => setNotepadExpanded(!isNotepadExpanded)} />
