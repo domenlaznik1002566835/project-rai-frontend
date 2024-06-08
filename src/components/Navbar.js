@@ -2,20 +2,25 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useUser } from '../contexts/UserContext';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import { FaJediOrder, FaComments, FaTimes, FaUserCircle } from 'react-icons/fa';
+import { FaJediOrder, FaComments, FaTimes, FaUserCircle, FaPencilAlt } from 'react-icons/fa';
 import { IoFastFood } from "react-icons/io5";
 
 const NavigationBar = () => {
-    const { user } = useUser();
-    const { level } = useUser();
+    const { user, level } = useUser();
     const [isChatExpanded, setChatExpanded] = useState(false);
+    const [isNotepadExpanded, setNotepadExpanded] = useState(false);
     const [chatAreaWidth, setChatAreaWidth] = useState(window.innerWidth / 5);
     const [chatAreaHeight, setChatAreaHeight] = useState(window.innerHeight / 2);
+    const [notepadAreaWidth, setNotepadAreaWidth] = useState(window.innerWidth / 5);
+    const [notepadAreaHeight, setNotepadAreaHeight] = useState(window.innerHeight / 2);
+    const [notepadContent, setNotepadContent] = useState('');
 
     useEffect(() => {
         const handleResize = () => {
             setChatAreaWidth(window.innerWidth / 5);
             setChatAreaHeight(window.innerHeight / 2);
+            setNotepadAreaWidth(window.innerWidth / 5);
+            setNotepadAreaHeight(window.innerHeight / 2);
         };
 
         window.addEventListener('resize', handleResize);
@@ -41,6 +46,9 @@ const NavigationBar = () => {
                             {level > 0 ? (
                                 <Button as={Link} to="/dbi" variant="outline-danger" className="mx-1">Insert</Button>
                             ) : null}
+                            {level > -1 ? (
+                                <Button as={Link} to="/contracts" variant="outline-danger" className="mx-1">Contracts</Button>
+                            ) : null}
                             <Button as={Link} to="/order" variant="outline-primary" className="mx-1"><IoFastFood /></Button>
                             {user ? (
                                 <>
@@ -64,6 +72,17 @@ const NavigationBar = () => {
                     <div className="chat-area" style={{ position: 'fixed', bottom: '20px', right: '20px', width: `${chatAreaWidth}px`, height: `${chatAreaHeight}px`, backgroundColor: 'white', border: '1px solid black', borderRadius: '10px', padding: '10px', overflow: 'auto' }}>
                         <FaTimes style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }} onClick={() => setChatExpanded(false)} />
                         <div>Experiencing issues? Let us know.</div>
+                    </div>
+                )}
+                {level > -1 && (
+                    <div style={{ position: 'fixed', bottom: '20px', left: '20px' }}>
+                        <FaPencilAlt size="2em" color="blue" style={{ cursor: 'pointer' }} onClick={() => setNotepadExpanded(!isNotepadExpanded)} />
+                        {isNotepadExpanded && (
+                            <div className="notepad-area" style={{ position: 'fixed', bottom: '20px', left: '20px', width: `${notepadAreaWidth}px`, height: `${notepadAreaHeight}px`, backgroundColor: 'white', border: '1px solid #ccc', borderRadius: '10px', padding: '10px', overflow: 'auto', boxShadow: '0px 0px 10px rgba(0,0,0,0.1)' }}>
+                                <FaTimes style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }} onClick={() => setNotepadExpanded(false)} />
+                                <textarea value={notepadContent} onChange={(e) => setNotepadContent(e.target.value)} style={{ width: '100%', height: '90%', padding: '10px', margin: '10px 0', border: '1px solid #ccc', borderRadius: '5px' }}></textarea>
+                            </div>
+                        )}
                     </div>
                 )}
             </div>
