@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { UserProvider } from './contexts/UserContext';
+import HomePage from './components/HomePage';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Logout from './components/Logout';
+import Register from './components/Register';
+import UserInfo from './components/UserInfo';
+import DatabaseManipulation from "./components/DatabaseManipulation";
+import DatabaseInserts from "./components/DatabaseInserts";
+import ArticleDetail from "./components/ArticleDetail";
+import Contracts from "./components/Contracts";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
+
+    const updateUserData = (userInfo) => {
+        localStorage.setItem("user", JSON.stringify(userInfo));
+        setUser(userInfo);
+    };
+
+    return (
+        <Router>
+            <UserProvider value={{ user, setUserContext: updateUserData }}>
+                <div className="App">
+                    <Navbar />
+                    <Routes>
+                        <Route path="/" element={<HomePage />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/logout" element={<Logout />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/userinfo" element={<UserInfo />} />
+                        <Route path="/dbm" element={<DatabaseManipulation />} />
+                        <Route path="/dbi" element={<DatabaseInserts />} />
+                        <Route path="/article/:id" element={<ArticleDetail />} />
+                        <Route path="/contracts" element={<Contracts />} />
+                    </Routes>
+                </div>
+            </UserProvider>
+        </Router>
+    );
 }
 
 export default App;
