@@ -4,10 +4,13 @@ export const UserContext = createContext({
   user: null,
   setUserContext: () => {},
   logout: () => {},
+  level: -1,
+  setLevel: () => {},
 });
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
+  const [level, setLevel] = useState(-1);
 
   const setUserContext = (userInfo) => {
     localStorage.setItem('user', JSON.stringify(userInfo));
@@ -17,10 +20,11 @@ export const UserProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem('user');
     setUser(null);
+    setLevel(-1);
   };
 
   return (
-    <UserContext.Provider value={{ user, setUserContext, logout }}>
+    <UserContext.Provider value={{ user, setUserContext, logout, level, setLevel }}>
       {children}
     </UserContext.Provider>
   );

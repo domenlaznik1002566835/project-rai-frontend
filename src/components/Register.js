@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
 import axios from 'axios';
+import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -27,37 +28,37 @@ const Register = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="firstName"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="First Name"
-            />
-            <input
-                type="text"
-                name="lastName"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="Last Name"
-            />
-            <input
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-            />
-            <input
-                type="password"
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-            />
-            <button type="submit">Register</button>
-        </form>
+        <Container>
+            <Row className="justify-content-md-center">
+                <Col xs lg="6">
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group controlId="formFirstName">
+                            <Form.Label>First Name</Form.Label>
+                            <Form.Control type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formLastName">
+                            <Form.Label>Last Name</Form.Label>
+                            <Form.Control type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formEmail">
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+                        </Form.Group>
+
+                        <Form.Group controlId="formPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+                        </Form.Group>
+
+                        <Button variant="primary" type="submit">
+                            Register
+                        </Button>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     );
 };
 
