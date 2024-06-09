@@ -5,4 +5,5 @@ RUN npm cache clean --force
 RUN npm install
 COPY . .
 EXPOSE 3002
+ENV PORT 3002
 CMD [ "npm", "run", "start" ]
