@@ -45,7 +45,7 @@ const UserInfo = () => {
                         <Card>
                             <Card.Body>
                                 <Card.Title>Room</Card.Title>
-                                <Card.Text>See your room information here</Card.Text>
+                                <Card.Text>See your room contract here</Card.Text>
                                 <Button variant="primary" onClick={() => handleSeeMore('/room')}>See More</Button>
                             </Card.Body>
                         </Card>
@@ -53,9 +53,9 @@ const UserInfo = () => {
                     <Col md={4} className="mb-4">
                         <Card>
                             <Card.Body>
-                                <Card.Title>Contract</Card.Title>
-                                <Card.Text>See your contracts here</Card.Text>
-                                <Button variant="primary" onClick={() => handleSeeMore('/contract')}>See More</Button>
+                                <Card.Title>Package</Card.Title>
+                                <Card.Text>See your package contract here</Card.Text>
+                                <Button variant="primary" onClick={() => handleSeeMore('/packageinfo')}>See More</Button>
                             </Card.Body>
                         </Card>
                     </Col>

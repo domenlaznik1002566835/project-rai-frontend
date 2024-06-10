@@ -13,6 +13,8 @@ import DatabaseInserts from "./components/DatabaseInserts";
 import ArticleDetail from "./components/ArticleDetail";
 import Contracts from "./components/Contracts";
 import PackageLogs from "./components/PackageLogs";
+import RoomInfo from './components/RoomInfo';
+import PackageInfo from "./components/PackageInfo";
 
 function App() {
     const [user, setUser] = useState(localStorage.user ? JSON.parse(localStorage.user) : null);
@@ -38,6 +40,8 @@ function App() {
                         <Route path="/article/:id" element={<ArticleDetail />} />
                         <Route path="/contracts" element={<Contracts />} />
                         <Route path="/package" element={<PackageLogs />} />
+                        <Route path="/room" element={<RoomInfo />} />
+                        <Route path="/packageinfo" element={<PackageInfo />} />
                     </Routes>
                 </div>
             </UserProvider>
