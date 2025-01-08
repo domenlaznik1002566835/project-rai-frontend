@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useUser } from '../contexts/UserContext';
 import axios from 'axios';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import ip from './ip';
 
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -13,7 +14,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/clients', {
+            const response = await axios.post(ip+'clients', {
                 firstName,
                 lastName,
                 email,
